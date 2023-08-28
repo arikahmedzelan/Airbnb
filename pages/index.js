@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Banner from "@/components/Banner";
 import axios from "axios";
 import Smallcard from "@/components/Smallcard";
+import MediumCard from "@/components/MediumCard";
+import LargeCard from "@/components/LargeCard";
 export default function Home({ exploreData, cardsData }) {
   return (
     <div className="">
@@ -32,8 +34,20 @@ export default function Home({ exploreData, cardsData }) {
         </section>
 
         <section>
-          <h2>Live AnyWhere</h2>
+          <h2 className="text-4xl font-semibold py-8">Live AnyWhere</h2>
+
+          <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
+            {cardsData?.map(({ img, title }) => (
+              <MediumCard key={img} img={img} title={title} />
+            ))}
+          </div>
         </section>
+        <LargeCard
+          img="https://links.papareact.com/4cj"
+          title="The  Greatest Outdoors"
+          description="Wishlists curated by Airbnb"
+          buttonText="Get Inspired"
+        />
       </main>
     </div>
   );
@@ -43,8 +57,8 @@ export async function getStaticProps() {
   const data = await axios.get("https://www.jsonkeeper.com/b/4G1G");
   const exploreData = data.data;
 
-  const data2 = await axios.get("https://www.jsonkeeper.com/b/VHHT");
-  const cardsData = data2.data2;
+  const data1 = await axios.get("https://www.jsonkeeper.com/b/VHHT");
+  const cardsData = data1.data;
 
   return {
     props: {
