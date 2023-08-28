@@ -22,7 +22,7 @@ function Banner() {
         hover:shadow-xl active:scale-90 
         transition duration-150"
         >
-          I'm flexible
+          I am flexible
         </button>
       </div>
     </div>
