@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Banner from "@/components/Banner";
 import axios from "axios";
 import Smallcard from "@/components/Smallcard";
-export default function Home({ exploreData }) {
+export default function Home({ exploreData, cardsData }) {
   return (
     <div className="">
       <Head>
@@ -30,6 +30,10 @@ export default function Home({ exploreData }) {
             ))}
           </div>
         </section>
+
+        <section>
+          <h2>Live AnyWhere</h2>
+        </section>
       </main>
     </div>
   );
@@ -39,9 +43,13 @@ export async function getStaticProps() {
   const data = await axios.get("https://www.jsonkeeper.com/b/4G1G");
   const exploreData = data.data;
 
+  const data2 = await axios.get("https://www.jsonkeeper.com/b/VHHT");
+  const cardsData = data2.data2;
+
   return {
     props: {
       exploreData,
+      cardsData,
     },
   };
 }
