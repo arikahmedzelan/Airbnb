@@ -32,7 +32,7 @@ export default function Home({ exploreData, cardsData }) {
         </section>
 
         <section>
-          <h2>Live AnyWhere</h2>
+          <h2>Live AnyWherevxcvxv</h2>
         </section>
       </main>
     </div>
