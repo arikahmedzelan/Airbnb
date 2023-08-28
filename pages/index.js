@@ -5,6 +5,7 @@ import axios from "axios";
 import Smallcard from "@/components/Smallcard";
 import MediumCard from "@/components/MediumCard";
 import LargeCard from "@/components/LargeCard";
+import Footer from "@/components/Footer";
 export default function Home({ exploreData, cardsData }) {
   return (
     <div className="">
@@ -48,6 +49,8 @@ export default function Home({ exploreData, cardsData }) {
           description="Wishlists curated by Airbnb"
           buttonText="Get Inspired"
         />
+
+        <Footer />
       </main>
     </div>
   );
