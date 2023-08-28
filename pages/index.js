@@ -2,9 +2,8 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Banner from "@/components/Banner";
 import axios from "axios";
-
-export default function Home(props) {
-  const { jsondata } = props;
+import Smallcard from "@/components/Smallcard";
+export default function Home({ exploreData }) {
   return (
     <div className="">
       <Head>
@@ -18,24 +17,31 @@ export default function Home(props) {
       <main className="max-w-7xl mx-auto px-8 sm:px-16">
         <section className="pt-6">
           <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
-
           {/*pull some data from a server -Api endpoints End*/}
 
-          {jsondata?.map((item, key) => (
-            <h2 key={key}>{item}</h2>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {exploreData?.map(({ img, distance, location }) => (
+              <Smallcard
+                key={img}
+                img={img}
+                distance={distance}
+                location={location}
+              />
+            ))}
+          </div>
         </section>
       </main>
     </div>
   );
 }
-export const getStaticProps = async () => {
-  const data = await fetch("https://links.papareact.com/pyp");
-  console.log(data);
-  const jsondata = await data.json();
+
+export async function getStaticProps() {
+  const data = await axios.get("https://www.jsonkeeper.com/b/4G1G");
+  const exploreData = data.data;
+
   return {
     props: {
-      jsondata,
+      exploreData,
     },
   };
-};
+}
